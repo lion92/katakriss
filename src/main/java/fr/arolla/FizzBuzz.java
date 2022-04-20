@@ -1,6 +1,8 @@
 package fr.arolla;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Comparator;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -32,7 +34,7 @@ public class FizzBuzz {
 
         result=  Map.of(3,"Fizz",5,"Buzz")
                 .entrySet()
-                .stream()
+                .stream().sorted(Comparator.comparing(Map.Entry::getKey))
                 .filter(entry->number % entry.getKey() == 0).
                 map(entrystr->entrystr.getValue()).
                 collect(Collectors.joining());
